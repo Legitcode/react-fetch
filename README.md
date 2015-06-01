@@ -6,9 +6,9 @@
 
 ##Props
 
-`url`: where to fetch json data from
-`onSuccess`: function on successfully fetching the data
-`onError`: function to be called on error
+- `url`: where to fetch json data from
+- `onSuccess`: function on successfully fetching the data
+- `onError`: function to be called on error
 
 ##Example
 
