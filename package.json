@@ -1,0 +1,40 @@
+{
+  "name": "react-fetch",
+  "description": "A component that fetches data from an api",
+  "version": "0.1.2",
+  "main": "./build/react-fetch.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "gulp clean && NODE_ENV=production gulp build",
+    "publish": "gulp publish:examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zackify/react-fetch.git"
+  },
+  "keywords": [
+    "reactjs",
+    "fetch",
+    "input",
+    "component"
+  ],
+  "browserify-shim": {
+    "react": "global:React"
+  },
+  "author": "Zach Silveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zackify/react-fetch/issues"
+  },
+  "devDependencies": {
+    "react-component-gulp-tasks": "^0.7.0",
+    "gulp": "^3.8.11"
+  },
+  "homepage": "https://github.com/zackify/react-fetch",
+  "dependencies": {
+    "node-fetch": "^1.2.1",
+    "react": "^0.13.3"
+  }
+}
