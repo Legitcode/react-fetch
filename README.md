@@ -1,34 +1,37 @@
-##React Slug
-![gif demo](https://s3.amazonaws.com/f.cl.ly/items/2N330o430g3g2s2e0S0E/Screen%20Recording%202015-02-27%20at%2005.02%20PM.gif)
+##React Fetch
 
 ##Install
 
-`npm install react-slug`
+`npm install react-fetch`
 
 ##Example
 
-It acts exactly the same as a regular input, the onChange will return the event as a second parameter.
+pass an api endpoint and the resulting object will be passed as a prop.
 
 ~~~js
 
 import React from 'react'
-import Slug from 'react-slug'
+import Fetch from 'react-fetch'
 
 export default class App extends React.Component{
 
-  constructor(){
-    super()
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(event){
-    console.log(event.target.value)
-  }
-
   render(){
-    return <Slug value="this will be stringified" onChange={this.handleChange} className="test" />
+    return (
+      <Fetch url="http://api.openweathermap.org/data/2.5/weather?q=London,uk">
+        <TestComponent/>
+      </Fetch>
+    )
+  }
+
+}
+
+class TestComponent extends React.Component{
+  render(){
+    console.log(this.props)
+    return <div/>
   }
 }
+React.render(<App />, document.getElementById('app'));
 
 ~~~
 
@@ -37,8 +40,3 @@ export default class App extends React.Component{
   Run this to view the example in `example/dist`
 
   npm run build
-
-###Description
-
-This is a super simple react component that will strip any non alpha-numeric characters for you. It will turn spaces into hyphens. 
-Thanks to [Jed Watson](http://github.com/jedwatson) for the gulpfile stuff ;)
