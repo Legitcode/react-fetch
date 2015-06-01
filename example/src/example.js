@@ -3,9 +3,13 @@ import Fetch from 'react-fetch'
 
 export default class App extends React.Component{
 
+  onError(error){
+    console.log(error)
+  }
+  
   render(){
     return (
-      <Fetch url="http://httpbin.org/headers">
+      <Fetch url="http://httpbin.org/headers" onError={this.onError}>
         <TestComponent/>
       </Fetch>
     )

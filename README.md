@@ -4,6 +4,12 @@
 
 `npm install react-fetch`
 
+##Props
+
+`url`: where to fetch json data from
+`onSuccess`: function on successfully fetching the data
+`onError`: function to be called on error
+
 ##Example
 
 pass an api endpoint and the resulting object will be passed as a prop.

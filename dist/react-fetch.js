@@ -44,6 +44,9 @@ var Fetch = (function (_React$Component) {
         return res.json();
       }).then(function (json) {
         _this.setState(json);
+        if (_this.props.onSuccess) _this.props.onSuccess(json);
+      })['catch'](function (error) {
+        if (_this.props.onError) _this.props.onError(error);
       });
     }
   }, {

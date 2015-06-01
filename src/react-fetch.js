@@ -17,6 +17,10 @@ export default class Fetch extends React.Component{
     })
     .then(json => {
       this.setState(json)
+      if(this.props.onSuccess) this.props.onSuccess(json)
+    })
+    .catch(error => {
+      if(this.props.onError) this.props.onError(error)
     })
   }
 
