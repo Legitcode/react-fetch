@@ -5,7 +5,7 @@ export default class App extends React.Component{
 
   render(){
     return (
-      <Fetch>
+      <Fetch url="http://httpbin.org/headers">
         <TestComponent/>
       </Fetch>
     )
@@ -15,8 +15,12 @@ export default class App extends React.Component{
 
 class TestComponent extends React.Component{
   render(){
-    console.log(this.props)
-    return <div/>
+    
+    return (
+      <div>
+      {this.props.headers ? <div>Your User-Agent: {this.props.headers['User-Agent']}</div>: 'loading'}
+      </div>
+    )
   }
 }
 React.render(<App />, document.getElementById('app'));

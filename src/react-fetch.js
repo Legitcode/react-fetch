@@ -7,21 +7,22 @@ export default class Fetch extends React.Component{
     super()
 
     this.state = {}
-    this.fetchData()
+    this.fetchData(props.url)
   }
 
-  fetchData(){
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk')
+  fetchData(url){
+    fetch(url)
     .then(res => {
-      console.log(res)
+      return res.json()
+    })
+    .then(json => {
+      this.setState(json)
     })
   }
 
   children(){
     return React.Children.map(this.props.children, child => {
-      return React.addons.cloneWithProps(child, {
-        name: 'test'
-      })
+      return React.addons.cloneWithProps(child, this.state)
     })
   }
 

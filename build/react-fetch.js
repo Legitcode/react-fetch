@@ -29,25 +29,29 @@ var Fetch = (function (_React$Component) {
     _get(Object.getPrototypeOf(Fetch.prototype), 'constructor', this).call(this);
 
     this.state = {};
-    this.fetchData();
+    this.fetchData(props.url);
   }
 
   _inherits(Fetch, _React$Component);
 
   _createClass(Fetch, [{
     key: 'fetchData',
-    value: function fetchData() {
-      (0, _nodeFetch2['default'])('http://api.openweathermap.org/data/2.5/weather?q=London,uk').then(function (res) {
-        console.log(res);
+    value: function fetchData(url) {
+      var _this = this;
+
+      (0, _nodeFetch2['default'])(url).then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        _this.setState(json);
       });
     }
   }, {
     key: 'children',
     value: function children() {
+      var _this2 = this;
+
       return _reactAddons2['default'].Children.map(this.props.children, function (child) {
-        return _reactAddons2['default'].addons.cloneWithProps(child, {
-          name: 'test'
-        });
+        return _reactAddons2['default'].addons.cloneWithProps(child, _this2.state);
       });
     }
   }, {
