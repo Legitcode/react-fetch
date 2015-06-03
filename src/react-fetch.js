@@ -7,11 +7,11 @@ export default class Fetch extends React.Component{
     super()
 
     this.state = {}
-    this.fetchData(props.url)
+    this.fetchData(props)
   }
 
-  fetchData(url){
-    fetch(url, this.props.options || {})
+  fetchData(props){
+    fetch(props.url, props.options || {})
     .then(res => {
       return res.json()
     })

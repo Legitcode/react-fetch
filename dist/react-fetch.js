@@ -30,17 +30,17 @@ var Fetch = (function (_React$Component) {
     _get(Object.getPrototypeOf(Fetch.prototype), 'constructor', this).call(this);
 
     this.state = {};
-    this.fetchData(props.url);
+    this.fetchData(props);
   }
 
   _inherits(Fetch, _React$Component);
 
   _createClass(Fetch, [{
     key: 'fetchData',
-    value: function fetchData(url) {
+    value: function fetchData(props) {
       var _this = this;
 
-      (0, _isomorphicFetch2['default'])(url, this.props.options || {}).then(function (res) {
+      (0, _isomorphicFetch2['default'])(props.url, props.options || {}).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this.setState(json);
