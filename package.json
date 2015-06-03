@@ -1,7 +1,7 @@
 {
   "name": "react-fetch",
   "description": "A component that fetches data from an api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./build/react-fetch.js",
   "directories": {
     "example": "example"

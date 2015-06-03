@@ -11,7 +11,7 @@ export default class Fetch extends React.Component{
   }
 
   fetchData(url){
-    fetch(url)
+    fetch(url, this.props.options || {})
     .then(res => {
       return res.json()
     })

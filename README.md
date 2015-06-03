@@ -9,7 +9,7 @@
 - `url`: where to fetch json data from
 - `onSuccess`: function on successfully fetching the data
 - `onError`: function to be called on error
-
+- `options`: object containing parameters for the request (see the [fetch](https://fetch.spec.whatwg.org/) spec)
 ##Example
 
 pass an api endpoint and the resulting object will be passed as a prop.

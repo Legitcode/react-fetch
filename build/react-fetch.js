@@ -39,7 +39,7 @@ var Fetch = (function (_React$Component) {
     value: function fetchData(url) {
       var _this = this;
 
-      (0, _isomorphicFetch2['default'])(url).then(function (res) {
+      (0, _isomorphicFetch2['default'])(url, this.props.options || {}).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this.setState(json);
