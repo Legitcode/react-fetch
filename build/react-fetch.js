@@ -18,9 +18,9 @@ var _reactAddons = require('react/addons');
 
 var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-var _nodeFetch = require('node-fetch');
+var _isomorphicFetch = require('isomorphic-fetch');
 
-var _nodeFetch2 = _interopRequireDefault(_nodeFetch);
+var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
 var Fetch = (function (_React$Component) {
   function Fetch(props) {
@@ -39,7 +39,7 @@ var Fetch = (function (_React$Component) {
     value: function fetchData(url) {
       var _this = this;
 
-      (0, _nodeFetch2['default'])(url).then(function (res) {
+      (0, _isomorphicFetch2['default'])(url).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this.setState(json);

@@ -1,5 +1,5 @@
 import React from 'react/addons'
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-fetch'
 
 export default class Fetch extends React.Component{
 
