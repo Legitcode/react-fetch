@@ -9,28 +9,28 @@
 8 verbose cache add local package /Users/zachsilveira/Web/react-fetch
 9 silly lockFile 3a52ce78- .
 10 verbose lock . /Users/zachsilveira/.npm/3a52ce78-.lock
-11 verbose tar pack [ '/Users/zachsilveira/.npm/react-fetch/0.0.5/package.tgz',
+11 verbose tar pack [ '/Users/zachsilveira/.npm/react-fetch/0.0.6/package.tgz',
 11 verbose tar pack   '.' ]
-12 verbose tarball /Users/zachsilveira/.npm/react-fetch/0.0.5/package.tgz
+12 verbose tarball /Users/zachsilveira/.npm/react-fetch/0.0.6/package.tgz
 13 verbose folder .
-14 info prepublish react-fetch@0.0.5
+14 info prepublish react-fetch@0.0.6
 15 silly lockFile 1f1177db-tar tar://.
 16 verbose lock tar://. /Users/zachsilveira/.npm/1f1177db-tar.lock
-17 silly lockFile 7ec34600-pm-react-fetch-0-0-5-package-tgz tar:///Users/zachsilveira/.npm/react-fetch/0.0.5/package.tgz
-18 verbose lock tar:///Users/zachsilveira/.npm/react-fetch/0.0.5/package.tgz /Users/zachsilveira/.npm/7ec34600-pm-react-fetch-0-0-5-package-tgz.lock
+17 silly lockFile 0ed3017e-pm-react-fetch-0-0-6-package-tgz tar:///Users/zachsilveira/.npm/react-fetch/0.0.6/package.tgz
+18 verbose lock tar:///Users/zachsilveira/.npm/react-fetch/0.0.6/package.tgz /Users/zachsilveira/.npm/0ed3017e-pm-react-fetch-0-0-6-package-tgz.lock
 19 silly lockFile 1f1177db-tar tar://.
 20 silly lockFile 1f1177db-tar tar://.
-21 silly lockFile 7ec34600-pm-react-fetch-0-0-5-package-tgz tar:///Users/zachsilveira/.npm/react-fetch/0.0.5/package.tgz
-22 silly lockFile 7ec34600-pm-react-fetch-0-0-5-package-tgz tar:///Users/zachsilveira/.npm/react-fetch/0.0.5/package.tgz
-23 silly lockFile c5610d91-ra-npm-react-fetch-0-0-5-package /Users/zachsilveira/.npm/react-fetch/0.0.5/package
-24 verbose lock /Users/zachsilveira/.npm/react-fetch/0.0.5/package /Users/zachsilveira/.npm/c5610d91-ra-npm-react-fetch-0-0-5-package.lock
-25 silly lockFile c5610d91-ra-npm-react-fetch-0-0-5-package /Users/zachsilveira/.npm/react-fetch/0.0.5/package
-26 silly lockFile c5610d91-ra-npm-react-fetch-0-0-5-package /Users/zachsilveira/.npm/react-fetch/0.0.5/package
+21 silly lockFile 0ed3017e-pm-react-fetch-0-0-6-package-tgz tar:///Users/zachsilveira/.npm/react-fetch/0.0.6/package.tgz
+22 silly lockFile 0ed3017e-pm-react-fetch-0-0-6-package-tgz tar:///Users/zachsilveira/.npm/react-fetch/0.0.6/package.tgz
+23 silly lockFile 2011acb3-ra-npm-react-fetch-0-0-6-package /Users/zachsilveira/.npm/react-fetch/0.0.6/package
+24 verbose lock /Users/zachsilveira/.npm/react-fetch/0.0.6/package /Users/zachsilveira/.npm/2011acb3-ra-npm-react-fetch-0-0-6-package.lock
+25 silly lockFile 2011acb3-ra-npm-react-fetch-0-0-6-package /Users/zachsilveira/.npm/react-fetch/0.0.6/package
+26 silly lockFile 2011acb3-ra-npm-react-fetch-0-0-6-package /Users/zachsilveira/.npm/react-fetch/0.0.6/package
 27 silly lockFile 3a52ce78- .
 28 silly lockFile 3a52ce78- .
 29 silly publish { name: 'react-fetch',
 29 silly publish   description: 'A component that fetches data from an api',
-29 silly publish   version: '0.0.5',
+29 silly publish   version: '0.0.6',
 29 silly publish   main: './build/react-fetch.js',
 29 silly publish   directories: { example: 'example' },
 29 silly publish   scripts:
@@ -52,54 +52,42 @@
 29 silly publish   dependencies: { 'isomorphic-fetch': '^2.1.0', react: '^0.13.3' },
 29 silly publish   readme: '##React Fetch\n\n##Install\n\n`npm install react-fetch`\n\n##Props\n\n- `url`: where to fetch json data from\n- `onSuccess`: function on successfully fetching the data\n- `onError`: function to be called on error\n- `options`: object containing parameters for the request (see the [fetch](https://fetch.spec.whatwg.org/) spec)\n##Example\n\npass an api endpoint and the resulting object will be passed as a prop.\n\n~~~js\n\nimport React from \'react\'\nimport Fetch from \'react-fetch\'\n\nexport default class App extends React.Component{\n\n  render(){\n    return (\n      <Fetch url="http://api.openweathermap.org/data/2.5/weather?q=London,uk">\n        <TestComponent/>\n      </Fetch>\n    )\n  }\n\n}\n\nclass TestComponent extends React.Component{\n  render(){\n    console.log(this.props)\n    return <div/>\n  }\n}\nReact.render(<App />, document.getElementById(\'app\'));\n\n~~~\n\n###Rebuilding\n  \n  Run this to view the example in `example/dist`\n\n  npm run build',
 29 silly publish   readmeFilename: 'README.md',
-29 silly publish   gitHead: 'b46e6a4fe72e5d2adc46a2e5ef642cef6aafb212',
-29 silly publish   _id: 'react-fetch@0.0.5',
-29 silly publish   _shasum: 'e71e76fd88e561d7488a6ae40948162619725c4f',
+29 silly publish   gitHead: '33fdc7f2f951e32ad71461e128ebc520464250e0',
+29 silly publish   _id: 'react-fetch@0.0.6',
+29 silly publish   _shasum: '5a28420ee26dc2273b0122e4e9b860bac184d9c5',
 29 silly publish   _from: '.' }
 30 verbose mapToRegistry name react-fetch
 31 verbose mapToRegistry uri https://registry.npmjs.org/react-fetch
 32 verbose publish registryBase https://registry.npmjs.org/
 33 verbose request where is /react-fetch
 34 verbose request registry https://registry.npmjs.org/
-35 verbose request id c1950eed206ce728
+35 verbose request id a09d08b2c09d150e
 36 verbose request url raw /react-fetch
 37 verbose request url resolving [ 'https://registry.npmjs.org/', './react-fetch' ]
 38 verbose request url resolved https://registry.npmjs.org/react-fetch
 39 verbose request where is https://registry.npmjs.org/react-fetch
 40 verbose request setting basic auth
 41 verbose request using bearer token for auth
-42 info trying registry request attempt 1 at 14:47:00
+42 info trying registry request attempt 1 at 14:47:37
 43 http PUT https://registry.npmjs.org/react-fetch
-44 http 403 https://registry.npmjs.org/react-fetch
-45 verbose headers { 'content-type': 'application/json',
-45 verbose headers   'cache-control': 'max-age=60',
-45 verbose headers   'content-length': '95',
-45 verbose headers   'accept-ranges': 'bytes',
-45 verbose headers   date: 'Wed, 03 Jun 2015 21:47:08 GMT',
-45 verbose headers   via: '1.1 varnish',
-45 verbose headers   connection: 'keep-alive',
-45 verbose headers   'x-served-by': 'cache-jfk1027-JFK',
-45 verbose headers   'x-cache': 'MISS',
-45 verbose headers   'x-cache-hits': '0',
-45 verbose headers   'x-timer': 'S1433368021.582016,VS0,VE6795' }
-46 error publish Failed PUT 403
-47 error Error: "You cannot publish over the previously published version 0.0.5." : react-fetch
-47 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:313:14)
-47 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:251:65)
-47 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
-47 error     at Request.emit (events.js:98:17)
-47 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
-47 error     at Request.emit (events.js:117:20)
-47 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
-47 error     at IncomingMessage.emit (events.js:117:20)
-47 error     at _stream_readable.js:938:16
-47 error     at process._tickCallback (node.js:419:13)
-48 error If you need help, you may report this *entire* log,
-48 error including the npm and node versions, at:
-48 error     <http://github.com/npm/npm/issues>
-49 error System Darwin 14.3.0
-50 error command "node" "/usr/local/bin/npm" "publish"
-51 error cwd /Users/zachsilveira/Web/react-fetch
-52 error node -v v0.10.30
-53 error npm -v 2.0.0-alpha-5
-54 verbose exit [ 1, true ]
+44 http 200 https://registry.npmjs.org/react-fetch
+45 info publish react-fetch@0.0.6
+46 verbose unsafe-perm in lifecycle true
+47 info react-fetch@0.0.6 Failed to exec publish script
+48 error react-fetch@0.0.6 publish: `gulp publish:examples`
+48 error Exit status 1
+49 error Failed at the react-fetch@0.0.6 publish script.
+49 error This is most likely a problem with the react-fetch package,
+49 error not with npm itself.
+49 error Tell the author that this fails on your system:
+49 error     gulp publish:examples
+49 error You can get their info via:
+49 error     npm owner ls react-fetch
+49 error There is likely additional logging output above.
+50 error System Darwin 14.3.0
+51 error command "node" "/usr/local/bin/npm" "publish"
+52 error cwd /Users/zachsilveira/Web/react-fetch
+53 error node -v v0.10.30
+54 error npm -v 2.0.0-alpha-5
+55 error code ELIFECYCLE
+56 verbose exit [ 1, true ]
