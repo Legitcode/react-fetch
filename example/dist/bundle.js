@@ -22226,9 +22226,15 @@ var _reactAddons = require('react/addons');
 
 var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
+//this is to hack around a bug, see:
+//https://github.com/matthew-andrews/isomorphic-fetch/pull/20
+//import fetch from 'isomorphic-fetch'
+
 var _isomorphicFetch = require('isomorphic-fetch');
 
 var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+var fetch = _isomorphicFetch2['default'].bind(undefined);
 
 var Fetch = (function (_React$Component) {
   function Fetch(props) {
@@ -22247,7 +22253,7 @@ var Fetch = (function (_React$Component) {
     value: function fetchData(props) {
       var _this = this;
 
-      (0, _isomorphicFetch2['default'])(props.url, props.options || {}).then(function (res) {
+      fetch(props.url, props.options || {}).then(function (res) {
         return res.json();
       }).then(function (json) {
         _this.setState(json);
