@@ -1,45 +1,41 @@
-import React from 'react/addons'
+import React, {Component, Children, cloneElement} from 'react'
+import fetch from 'isomorphic-fetch'
 
-//this is to hack around a bug, see:
-//https://github.com/matthew-andrews/isomorphic-fetch/pull/20
-//import fetch from 'isomorphic-fetch'
-import fetch_ from 'isomorphic-fetch';
-var fetch = fetch_.bind(undefined);
-
-export default class Fetch extends React.Component{
+export default class Fetch extends Component{
 
   constructor(props){
     super()
-
     this.state = {}
     this.fetchData(props)
   }
 
   fetchData(props){
-    fetch(props.url, props.options || {})
-    .then(res => {
-      return res.json()
-    })
-    .then(json => {
-      this.setState(json)
-      if(this.props.onSuccess) this.props.onSuccess(json)
-    })
-    .catch(error => {
-      if(this.props.onError) this.props.onError(error)
-    })
+    const { onSuccess, onError, options } = props
+    fetch(props.url, options || {})
+      .then(res => {
+        return res.json()
+      })
+      .then(json => {
+        this.setState(json)
+        if(onSuccess) onSuccess(json)
+      })
+      .catch(error => {
+        if(onError) onError(error)
+      })
   }
 
   children(){
-    return React.Children.map(this.props.children, child => {
-      return React.addons.cloneWithProps(child, this.state)
+    return Children.map(this.props.children, child => {
+      return cloneElement(child, this.state)
     })
   }
 
   render(){
     return (
       <div>
-      {this.children()}
+        {this.children()}
       </div>
     )
   }
+
 }
