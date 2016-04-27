@@ -1,7 +1,7 @@
 {
   "name": "react-fetch",
   "description": "A component that fetches data from an api",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./build/react-fetch.js",
   "directories": {
     "example": "example"
@@ -35,7 +35,9 @@
   },
   "homepage": "https://github.com/zackify/react-fetch",
   "dependencies": {
-    "isomorphic-fetch": "^2.1.0",
-    "react": "^0.13.3"
+    "isomorphic-fetch": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=0.14.0 || >15.0.0"
   }
 }

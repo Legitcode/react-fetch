@@ -1,4 +1,4 @@
-import React from 'react/addons'
+import React from 'react'
 
 //this is to hack around a bug, see:
 //https://github.com/matthew-andrews/isomorphic-fetch/pull/20
@@ -31,7 +31,7 @@ export default class Fetch extends React.Component{
 
   children(){
     return React.Children.map(this.props.children, child => {
-      return React.addons.cloneWithProps(child, this.state)
+      return React.cloneElement(child, this.state)
     })
   }
 
