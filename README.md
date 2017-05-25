@@ -1,30 +1,35 @@
-##React Fetch
+# React Fetch
 
-##Install
+## Install
 
-`npm install react-fetch`
+    npm install react-fetch
 
-##Props
+## Props
 
 - `url`: where to fetch json data from
 - `onSuccess`: function on successfully fetching the data
 - `onError`: function to be called on error
 - `options`: object containing parameters for the request (see the [fetch](https://fetch.spec.whatwg.org/) spec)
 
-##Example
+## Example
 
 pass an api endpoint and the resulting object will be passed as a prop.
 
 ~~~js
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Fetch from 'react-fetch'
 
 export default class App extends React.Component{
 
+  onError(error){
+    console.log(error)
+  }
+
   render(){
     return (
-      <Fetch url="http://api.openweathermap.org/data/2.5/weather?q=London,uk">
+      <Fetch url="http://httpbin.org/headers" onError={this.onError}>
         <TestComponent/>
       </Fetch>
     )
@@ -34,16 +39,22 @@ export default class App extends React.Component{
 
 class TestComponent extends React.Component{
   render(){
-    console.log(this.props)
-    return <div/>
+
+    return (
+      <div>
+      {this.props.headers ? <div>Your User-Agent: {this.props.headers['User-Agent']}</div>: 'loading'}
+      </div>
+    )
   }
 }
-React.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
+
 
 ~~~
 
-###Rebuilding
+### Rebuilding
   
-  Run this to view the example in `example/dist`
+Run this to view the example in `example/dist`
 
-  npm run build
+    npm install
+    npm run build
