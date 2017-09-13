@@ -14,6 +14,12 @@ export default class Fetch extends React.Component{
     this.state = {}
     this.fetchData(props)
   }
+  
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.url !== this.props.url) {
+      this.fetchData(nextProps);
+    }
+  }
 
   fetchData(props){
     fetch(props.url, props.options || {})
