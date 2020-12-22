@@ -6,46 +6,30 @@ import React from 'react'
 import fetch_ from 'isomorphic-fetch';
 var fetch = fetch_.bind(undefined);
 
-export default class Fetch extends React.Component{
+function Fetch(props) {
+  const [state, setState] = React.useState({});
 
-  constructor(props){
-    super()
-
-    this.state = {}
-    this.fetchData(props)
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.url !== this.props.url) {
-      this.fetchData(nextProps);
-    }
-  }
-
-  fetchData(props){
+  const fetchData = React.useCallback((props) => {
     fetch(props.url, props.options || {})
-    .then(res => {
-      return res.json()
-    })
-    .then(json => {
-      this.setState(json)
-      if(this.props.onSuccess) this.props.onSuccess(json)
-    })
-    .catch(error => {
-      if(this.props.onError) this.props.onError(error)
-    })
-  }
+      .then(res => res.json())
+      .then(json => {
+        setState(json)
+        if (props.onSuccess) props.onSuccess(json)
+      })
+      .catch(error => {
+        if (props.onError) props.onError(error)
+      });
+  }, []);
 
-  children(){
-    return React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, this.state)
-    })
-  }
+  React.useLayoutEffect(() => {
+    fetchData();
+  }, [props]);
 
-  render(){
-    return (
-      <div>
-      {this.children()}
-      </div>
-    )
-  }
+  return (
+    <div>
+      {React.Children.map(props.children, child => React.cloneElement(child, state))}
+    </div>
+  )
 }
+
+export default Fetch;
