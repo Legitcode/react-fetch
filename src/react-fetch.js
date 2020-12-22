@@ -1,35 +1,31 @@
-import React from 'react'
+import { Children, cloneElement, useState, useCallback, useLayoutEffect } from 'react'
 
 //this is to hack around a bug, see:
 //https://github.com/matthew-andrews/isomorphic-fetch/pull/20
 //import fetch from 'isomorphic-fetch'
 import fetch_ from 'isomorphic-fetch';
-var fetch = fetch_.bind(undefined);
+const fetch = fetch_.bind(undefined);
 
-function Fetch(props) {
-  const [state, setState] = React.useState({});
+function Fetch({ url, options, onSuccess, onError, children }) {
+  const [state, setState] = useState({});
 
-  const fetchData = React.useCallback((props) => {
-    fetch(props.url, props.options || {})
+  const fetchData = useCallback(() => {
+    fetch(url, options || {})
       .then(res => res.json())
       .then(json => {
-        setState(json)
-        if (props.onSuccess) props.onSuccess(json)
+        setState(json);
+        if (onSuccess) onSuccess(json);
       })
       .catch(error => {
-        if (props.onError) props.onError(error)
+        if (onError) onError(error);
       });
-  }, []);
+  }, [url, options]);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     fetchData();
-  }, [props]);
+  }, [url, options]);
 
-  return (
-    <div>
-      {React.Children.map(props.children, child => React.cloneElement(child, state))}
-    </div>
-  )
+  return Children.map(children, child => cloneElement(child, state));
 }
 
 export default Fetch;
