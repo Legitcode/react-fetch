@@ -1,51 +1,31 @@
-import React from 'react'
+import { Children, cloneElement, useState, useCallback, useLayoutEffect } from 'react'
 
 //this is to hack around a bug, see:
 //https://github.com/matthew-andrews/isomorphic-fetch/pull/20
 //import fetch from 'isomorphic-fetch'
 import fetch_ from 'isomorphic-fetch';
-var fetch = fetch_.bind(undefined);
+const fetch = fetch_.bind(undefined);
 
-export default class Fetch extends React.Component{
+function Fetch({ url, options, onSuccess, onError, children }) {
+  const [state, setState] = useState({});
 
-  constructor(props){
-    super()
+  const fetchData = useCallback(() => {
+    fetch(url, options || {})
+      .then(res => res.json())
+      .then(json => {
+        setState(json);
+        if (onSuccess) onSuccess(json);
+      })
+      .catch(error => {
+        if (onError) onError(error);
+      });
+  }, [url, options]);
 
-    this.state = {}
-    this.fetchData(props)
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.url !== this.props.url) {
-      this.fetchData(nextProps);
-    }
-  }
+  useLayoutEffect(() => {
+    fetchData();
+  }, [url, options]);
 
-  fetchData(props){
-    fetch(props.url, props.options || {})
-    .then(res => {
-      return res.json()
-    })
-    .then(json => {
-      this.setState(json)
-      if(this.props.onSuccess) this.props.onSuccess(json)
-    })
-    .catch(error => {
-      if(this.props.onError) this.props.onError(error)
-    })
-  }
-
-  children(){
-    return React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, this.state)
-    })
-  }
-
-  render(){
-    return (
-      <div>
-      {this.children()}
-      </div>
-    )
-  }
+  return Children.map(children, child => cloneElement(child, state));
 }
+
+export default Fetch;
