@@ -15,45 +15,40 @@
 
 pass an api endpoint and the resulting object will be passed as a prop.
 
-~~~js
+```js
+import React from "react";
+import Fetch from "react-fetch";
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Fetch from 'react-fetch'
+function App() {
+  const handleError = (error) => console.log(error);
+  const handleSuccess = (data) => console.log(data);
 
-export default class App extends React.Component{
-
-  onError(error){
-    console.log(error)
-  }
-
-  render(){
-    return (
-      <Fetch url="http://httpbin.org/headers" onError={this.onError}>
-        <TestComponent/>
-      </Fetch>
-    )
-  }
-
+  return (
+    <Fetch
+      url="http://httpbin.org/headers"
+      onSuccess={handleSuccess}
+      onError={handleError}
+    >
+      <UserAgent />
+    </Fetch>
+  );
 }
 
-class TestComponent extends React.Component{
-  render(){
-
-    return (
-      <div>
-      {this.props.headers ? <div>Your User-Agent: {this.props.headers['User-Agent']}</div>: 'loading'}
-      </div>
-    )
-  }
+function UserAgent(props) {
+  return (
+    <div>
+      {props.headers ? (
+        <div>Your User-Agent: {props.headers["User-Agent"]}</div>
+      ) : (
+        "Loading ..."
+      )}
+    </div>
+  );
 }
-ReactDOM.render(<App />, document.getElementById('app'));
-
-
-~~~
+```
 
 ### Rebuilding
-  
+
 Run this to view the example in `example/dist`
 
     npm install
